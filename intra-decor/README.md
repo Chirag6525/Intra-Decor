@@ -40,3 +40,6 @@ The use of Framer motion to give animation to different components of the websit
 
 ## Toastify
 The use of toastify to animate and style the alert systems.
+
+## EmailJs
+The use of EmailJs Api to send the information or query to the respective email address.

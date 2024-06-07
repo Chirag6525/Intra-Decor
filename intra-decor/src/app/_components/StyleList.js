@@ -28,16 +28,10 @@ const StyleList = () => {
 	};
 	return (
 		<>
-			<div className="ml-[8rem] mt-[3rem] mr-[8rem]">
+			<div className="lg:max-w-[1024px] lg:ml-[1rem] lg:mr[8rem] md:max-w-md md:mx-auto md:p-8 lg:p-12 mt-[1rem]">
 				<div className="text-5xl font-bold">Browse By Style</div>
 			</div>
-			<div className="flex items-center justify-between ml-[8rem] mt-[3rem] mr-[8rem]">
-				{/* <button
-					className="px-3 py-1 bg-gray-200 rounded-full cursor-pointer text-2xl font-extrabold"
-					onClick={() => scroll(-1000)}
-				>
-					{"<"}
-				</button> */}
+			<div className="flex items-center justify-between ml-[8rem] mt-[1rem] mr-[8rem]">
 				<div
 					className="flex overflow-x-scroll hide-scrollbar rounded-lg"
 					style={{
@@ -50,8 +44,8 @@ const StyleList = () => {
 				>
 					{styles.map((style, index) => (
 						<motion.div
-							initial={{ x: "0",}}
-							animate={{ x: "-870%"}}
+							initial={{ x: "0" }}
+							animate={{ x: "-870%" }}
 							transition={{ ease: "linear", repeat: Infinity, duration: 15 }}
 							key={index}
 							className="flex flex-col items-center m-2 shadow-lg shadow-teal-600 rounded-lg"
@@ -67,12 +61,6 @@ const StyleList = () => {
 						</motion.div>
 					))}
 				</div>
-				{/* <button
-					className="p-2 bg-gray-200 rounded-full cursor-pointer text-2xl font-extrabold px-3 py-1"
-					onClick={() => scroll(1000)}
-				>
-					{">"}
-				</button> */}
 			</div>
 		</>
 	);

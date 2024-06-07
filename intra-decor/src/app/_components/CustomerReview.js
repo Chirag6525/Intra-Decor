@@ -49,14 +49,14 @@ const CustomerReview = () => {
 
 			const currentReview = reviews[currentReviewIndex];
   return (
-		<div className="flex items-center justify-center  bg-teal-100">
+		<div className="flex items-center justify-center sm:max-w-md md:max-w-lg lg:max-w-[2000px] bg-teal-100 sm:ml-[3rem]">
 			<button
 				onClick={handlePrev}
-				className="bg-teal-800 hover:bg-teal-400 text-white font-bold py-2 px-3 rounded-lg inline-flex items-center ml-[1rem]"
+				className="bg-teal-800 hover:bg-teal-400 text-white font-bold py-2 px-3 rounded-lg hidden items-center ml-[1rem] md:block lg:block xl:block sm:hidden"
 			>
 				Previous
 			</button>
-			<div className="flex flex-col items-center space-y-4  m-[5rem] p-[5rem] rounded-3xl bg-teal-700 shadow-md shadow-teal-300">
+			<div className="flex flex-col items-center space-y-4 sm:p-4 md:p-6 lg:p-[6rem] m-[5rem] p-[5rem] rounded-3xl bg-teal-700 shadow-md shadow-teal-300">
 				<div className="text-white text-3xl font-semibold">
 					Our Happy Customers
 				</div>
@@ -71,7 +71,7 @@ const CustomerReview = () => {
 			</div>
 			<button
 				onClick={handleNext}
-				className="bg-teal-800 hover:bg-teal-400 text-white font-bold py-2 px-3 rounded-lg inline-flex items-center mr-[1rem]"
+				className="bg-teal-800 hover:bg-teal-400 text-white font-bold py-2 px-3 rounded-lg hidden items-center mr-[1rem] md:block lg:block xl:block sm:hidden"
 			>
 				Next
 			</button>

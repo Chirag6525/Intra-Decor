@@ -9,14 +9,13 @@ const Contact = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [queryText, setQueryText] = useState("");
 	const handleSend = async() => {
-		// Here you can handle the sending of the details to an email address.
-		// This is typically done by making a POST request to a server-side endpoint that handles email sending.
+
 		if (!phoneNumber) {
-			toast("Enter Phone Number")
+			toast.error("Enter Phone Number")
 			return
 		}
 		if (!queryText) {
-			toast("Enter your Query")
+			toast.error("Enter your Query")
 			return
 		}
 		console.log(`${phoneNumber} ${queryText}`)
@@ -26,14 +25,14 @@ const Contact = () => {
 		}
 		emailjs
 			.send(
-				"service_5c11nmr",
-				"template_2g5a76i",
+				process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+				process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
 				templateEmail,
-				"BvKjo54BbL2iUmT-6"
+				process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
 			)
 			.then((response) => {
 				console.log("SUCCESS!", response.status, response.text);
-				toast("Submit Successfully!!!!");
+				toast.success("Submit Successfully!!!!");
 				setPhoneNumber("");
 				setQueryText("");
 			})

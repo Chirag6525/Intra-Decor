@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import emailjs from "emailjs-com"
 
 const Contact = () => {
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -11,27 +11,36 @@ const Contact = () => {
 	const handleSend = async() => {
 		// Here you can handle the sending of the details to an email address.
 		// This is typically done by making a POST request to a server-side endpoint that handles email sending.
-		 const response = await fetch("/api/send-email.js", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					phoneNumber,
-					queryText,
-				}),
+		if (!phoneNumber) {
+			toast("Enter Phone Number")
+			return
+		}
+		if (!queryText) {
+			toast("Enter your Query")
+			return
+		}
+		console.log(`${phoneNumber} ${queryText}`)
+		const templateEmail = {
+			from_name: phoneNumber,
+			message: queryText,
+		}
+		emailjs
+			.send(
+				"service_5c11nmr",
+				"template_2g5a76i",
+				templateEmail,
+				"BvKjo54BbL2iUmT-6"
+			)
+			.then((response) => {
+				console.log("SUCCESS!", response.status, response.text);
+				toast("Submit Successfully!!!!");
+				setPhoneNumber("");
+				setQueryText("");
+			})
+			.catch((err) => {
+				console.error("FAILED...", err);
 			});
-
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-
-			const data = await response.json();
-			console.log(data);
-
-			toast("Submit Successfully!!!!");
-			setPhoneNumber("");
-			setQueryText("");
+		
 	};
 	return (
 		<div className="flex p-[2rem]">
